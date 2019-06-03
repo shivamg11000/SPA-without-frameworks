@@ -1,5 +1,4 @@
-##Single Page Application & ParcelJS
-
+# Single Page Application & ParcelJS
 
 
 ## Features
@@ -27,6 +26,7 @@ npm install -g parcel-bundler
 </html>
 ```
 3. Code Splitting
+
 Dividing the the webpage, its scss files
 & resuable components into code chunks
 Using
