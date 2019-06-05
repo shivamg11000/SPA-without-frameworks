@@ -1,7 +1,9 @@
+
 // pages
 import { contactPage, homePage, resumePage } from "./views/pages/*.js";
 // components
-import { header, navbar } from "./views/components/*.js";
+import { header, navbar, footer } from "./views/components/*.js";
+
 
 // default styling
 import "./index.scss";
@@ -14,14 +16,17 @@ const routes = {
 };
 
 
+
 const router = () => {
     const entry = document.querySelector(".container");
     const html = 
         header.html + 
         navbar.html + 
-        routes[window.location.hash ? window.location.hash : "#"].html
+        routes[window.location.hash ? window.location.hash : "#"].html +
+        footer.html
     ;
      entry.innerHTML = html;
+
 };
 
 window.addEventListener("hashchange", router); // on hash link change, example from "#" to "#/home"

@@ -5,5 +5,5 @@ export const html = `
         <a href="#">HOME<a/>
         <a href="#/resume">Resume<a/>
         <a href="#/contact">Contact<a/>
-     </div>    
+    </div>    
 `;
