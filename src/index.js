@@ -1,36 +1,41 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+// Use when the build is served using a web server
+//import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// Use when the build is to be served without a web server i.e running directly index.html from build
+import { HashRouter as Router, Route} from 'react-router-dom';
 
 // pages
-import { contactPage, homePage, resumePage } from "./views/pages/*.js";
-// components
-import { header, navbar, footer } from "./views/components/*.js";
+import HomePage from "./views/pages/HomePage";
+import ContactPage from "./views/pages/ContactPage";
+import ResumePage from "./views/pages/ResumePage";
 
+
+// components
+import Header from "./views/components/Header";
+import Navbar from "./views/components/Navbar";
+import Footer from "./views/components/Footer";
 
 // default styling
 import "./index.scss";
 
-// content in link after # is not read so no server request is made, this way client side routing can be done
-const routes = {
-  '#': homePage,
-  '#/resume': resumePage,
-  '#/contact': contactPage,
-};
-
-
 
 const router = () => {
-    const entry = document.querySelector(".container");
-    const html = 
-        header.html + 
-        navbar.html + 
-        routes[window.location.hash ? window.location.hash : "#"].html +
-        footer.html
-    ;
-     entry.innerHTML = html;
-
+    const entry = document.querySelector(".entry");
+    ReactDOM.render(
+      <div className="container">
+        <Header />
+        <Router>
+            <Navbar />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/resume" component={ResumePage} />
+        </Router>
+        <Footer />
+      </div>
+    ,entry);
 };
 
-window.addEventListener("hashchange", router); // on hash link change, example from "#" to "#/home"
-
 window.addEventListener("load", router);  // on html loads
-
-
